@@ -109,7 +109,7 @@ public class Rank extends JavaPlugin implements Listener{
 				}
 				
 				else{
-					sender.sendMessage("Couldn't find that rank! Use /rank list for a list of ranks.");
+					sender.sendMessage(ChatColor.GREEN + "Couldn't find that rank! Use /rank list for a list of ranks.");
 					return true;
 				}
 			}
