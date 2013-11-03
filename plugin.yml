@@ -1,0 +1,9 @@
+name: Rank
+main: me.michaelkrauty.Rank.Rank
+author: michaelkrauty
+version: 1.0
+depend: [Vault]
+commands:
+   rank:
+     description: The rank command.
+     usage: /<command>
