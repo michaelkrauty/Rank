@@ -46,7 +46,7 @@ public class Rank extends JavaPlugin{
 			Player player = (Player) sender;
 			
 			if(args.length == 0){
-				sender.sendMessage(Lang.syntaxError(sender.getName()));
+				sender.sendMessage(Lang.syntaxError());
 				return true;
 			}
 			
@@ -69,7 +69,7 @@ public class Rank extends JavaPlugin{
 			
 			
 			
-			sender.sendMessage(Lang.syntaxError(sender.getName()));
+			sender.sendMessage(Lang.syntaxError());
 			return true;
 		}
 		return true;
