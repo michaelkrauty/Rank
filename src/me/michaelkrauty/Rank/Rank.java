@@ -1,6 +1,6 @@
 package me.michaelkrauty.Rank;
 
-import me.michaelkrauty.Rank.Format;
+import me.michaelkrauty.Rank.Lang;
 import me.michaelkrauty.Rank.commands.*;
 
 import java.util.ArrayList;
@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 
 import net.milkbowl.vault.economy.Economy;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -47,7 +46,7 @@ public class Rank extends JavaPlugin{
 			Player player = (Player) sender;
 			
 			if(args.length == 0){
-				sender.sendMessage(syntaxError(sender.getName()));
+				sender.sendMessage(Lang.syntaxError(sender.getName()));
 				return true;
 			}
 			
@@ -70,19 +69,12 @@ public class Rank extends JavaPlugin{
 			
 			
 			
-			sender.sendMessage(syntaxError(sender.getName()));
+			sender.sendMessage(Lang.syntaxError(sender.getName()));
 			return true;
 		}
 		return true;
 	}
 	
-	public String asdf(){
-		return ChatColor.RED + "Incorrect Usage!";
-	}
-	
-	public String syntaxError(String str){
-		return Format.format(getConfig().getString("unknown_command").replace("<player>", str));
-	}
 	
 	public ArrayList<String> getRanks(){
 		ArrayList<String> ranks = new ArrayList<String>(getConfig().getConfigurationSection("ranks").getKeys(true));
