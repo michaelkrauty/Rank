@@ -1,7 +1,7 @@
 name: Rank
 main: me.michaelkrauty.Rank.Rank
 author: michaelkrauty
-version: 1.0
+version: 2.0
 depend: [Vault]
 commands:
    rank:
