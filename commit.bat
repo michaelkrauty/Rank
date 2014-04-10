@@ -12,6 +12,7 @@ del .classpath
 move Rank.jar ../target
 cd me\michaelkrauty\Rank
 del *.class
+del commands\*.class
 cd ../../../../
 git add --all
 git commit -m update
