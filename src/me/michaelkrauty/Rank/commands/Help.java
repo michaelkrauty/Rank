@@ -3,7 +3,7 @@ package me.michaelkrauty.Rank.commands;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-public class Help {
+public class Help{
 
 	public static void help(Player player, String[] args) {
 		if(args.length == 1){
