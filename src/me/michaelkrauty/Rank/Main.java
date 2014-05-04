@@ -13,6 +13,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+// TODO: create scheduler to check player stats every x minutes & make changes accordingly
+// TODO: add listeners for player/mob kill events
+
 public class Main extends JavaPlugin {
 
 	public static Main main;
