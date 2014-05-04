@@ -65,7 +65,7 @@ public class RankFile {
 		}
 		return id;
 	}
-	
+
 	public int getPrice(int id) {
 		return ranks.getInt(getRanks().get(id) + ".price");
 	}
