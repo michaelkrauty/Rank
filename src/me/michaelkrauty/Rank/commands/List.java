@@ -17,7 +17,6 @@ public class List {
 			Main.main.getServer().broadcastMessage(
 					rankFile.getName(ranks.get(i)));
 		}
-
+		return;
 	}
-
 }

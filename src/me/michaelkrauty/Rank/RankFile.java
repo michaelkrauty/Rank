@@ -16,8 +16,7 @@ public class RankFile {
 		try {
 			ranksFile = new File(Main.main.getDataFolder() + "/" + "ranks.yml");
 			if (!ranksFile.exists()) {
-				Main.main.log.info("Creating new ranks.yml in \""
-						+ Main.main.getDataFolder() + "/" + "ranks.yml\"");
+				Main.main.log.info("Creating new ranks.yml");
 				ranksFile.createNewFile();
 			}
 			ranks.load(ranksFile);

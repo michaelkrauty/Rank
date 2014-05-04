@@ -16,6 +16,7 @@ public class Buy extends Main {
 							Main.main.getServer().getConsoleSender(),
 							rankFile.getCommands(args[1]).get(i));
 				}
+				return;
 			} else {
 				player.sendMessage("You don't have enough money to buy the rank "
 						+ rankFile.getName(rankFile.getId(args[1])));

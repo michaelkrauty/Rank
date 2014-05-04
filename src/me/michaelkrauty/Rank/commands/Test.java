@@ -20,7 +20,6 @@ public class Test {
 		for (int i = 0; i < commands.size(); i++) {
 			Main.main.getServer().broadcastMessage(commands.get(i));
 		}
-
+		return;
 	}
-
 }
