@@ -1,5 +1,5 @@
 name: Rank
-main: me.michaelkrauty.Rank.Rank
+main: me.michaelkrauty.Rank.Main
 author: michaelkrauty
 version: 2.0
 depend: [Vault]

@@ -1,0 +1,6 @@
+#What should we send to the player when they do /rank <unknown command>?
+unknown_command: "&aUnknown command! Use /rank help for help."
+#What should we send to the player if the rank they tried to buy doesn't exist?
+rank_not_found: "&aCouldn't find that rank!"
+#What should we wend to the player if they can't afford the rank they're trying to buy?
+not_enough_money: "&aYou don't have enough money for <rank>!"
