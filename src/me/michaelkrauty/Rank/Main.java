@@ -1,12 +1,12 @@
 package me.michaelkrauty.Rank;
 
-import me.michaelkrauty.Rank.Lang;
 import me.michaelkrauty.Rank.commands.*;
 
 import java.util.logging.Logger;
 
 import net.milkbowl.vault.economy.Economy;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -50,7 +50,7 @@ public class Main extends JavaPlugin {
 			Player player = (Player) sender;
 
 			if (args.length == 0) {
-				sender.sendMessage(Lang.syntaxError());
+				player.sendMessage(ChatColor.GRAY + "Incorrect usage! Use \"/rank help\" for help!");
 				return true;
 			}
 
@@ -74,7 +74,7 @@ public class Main extends JavaPlugin {
 				return true;
 			}
 
-			sender.sendMessage(Lang.syntaxError());
+			player.sendMessage(ChatColor.GRAY + "Unknown command! Use \"/rank help\" for help!");
 			return true;
 		}
 		return true;

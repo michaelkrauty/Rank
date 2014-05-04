@@ -52,10 +52,12 @@ public class RankFile {
 	}
 
 	public String getName(int id) {
+		load();
 		return ranks.getString(getRanks().get(id) + ".name");
 	}
 
 	public int getId(String name) {
+		load();
 		int id = -1;
 		for (int i = 0; i < getRanks().size(); i++) {
 			if (getName(getRanks().get(i)).equalsIgnoreCase(name)) {
@@ -66,14 +68,17 @@ public class RankFile {
 	}
 
 	public int getPrice(int id) {
+		load();
 		return ranks.getInt(getRanks().get(id) + ".price");
 	}
 
 	public int getPrice(String name) {
+		load();
 		return ranks.getInt(name + ".price");
 	}
 
 	public ArrayList<String> getCommands(String name) {
+		load();
 		ArrayList<String> cmds = new ArrayList<String>();
 		@SuppressWarnings("unchecked")
 		List<String> commands = (List<String>) ranks.getList(getId(name)
