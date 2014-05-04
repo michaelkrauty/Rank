@@ -50,7 +50,8 @@ public class Main extends JavaPlugin {
 			Player player = (Player) sender;
 
 			if (args.length == 0) {
-				player.sendMessage(ChatColor.GRAY + "Incorrect usage! Use \"/rank help\" for help!");
+				player.sendMessage(ChatColor.GRAY
+						+ "Incorrect usage! Use \"/rank help\" for help!");
 				return true;
 			}
 
@@ -74,7 +75,8 @@ public class Main extends JavaPlugin {
 				return true;
 			}
 
-			player.sendMessage(ChatColor.GRAY + "Unknown command! Use \"/rank help\" for help!");
+			player.sendMessage(ChatColor.GRAY
+					+ "Unknown command! Use \"/rank help\" for help!");
 			return true;
 		}
 		return true;

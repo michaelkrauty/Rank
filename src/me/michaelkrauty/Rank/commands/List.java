@@ -15,7 +15,7 @@ public class List {
 		ArrayList<Integer> ranks = rankFile.getRanks();
 		String out = "";
 		for (int i = 0; i < ranks.size(); i++) {
-			if(i == (ranks.size() - 1)) {
+			if (i == (ranks.size() - 1)) {
 				out = out + rankFile.getName(ranks.get(i));
 			} else {
 				out = out + rankFile.getName(ranks.get(i)) + ", ";

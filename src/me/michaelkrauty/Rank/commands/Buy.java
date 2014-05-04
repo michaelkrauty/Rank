@@ -12,7 +12,8 @@ public class Buy {
 		if (rankFile.getRanks().contains(rankFile.getId(args[1]))) {
 			if (Main.economy.getBalance(player.getName()) >= rankFile
 					.getPrice(rankFile.getId(args[1]))) {
-				Main.economy.withdrawPlayer(player.getName(), rankFile.getPrice(rankFile.getId(args[1])));
+				Main.economy.withdrawPlayer(player.getName(),
+						rankFile.getPrice(rankFile.getId(args[1])));
 				for (int i = 0; i < rankFile.getCommands(args[1]).size(); i++) {
 					Main.main.getServer().dispatchCommand(
 							Main.main.getServer().getConsoleSender(),
@@ -24,12 +25,14 @@ public class Buy {
 						+ rankFile.getPrice(rankFile.getId(args[1])));
 				return;
 			} else {
-				player.sendMessage(ChatColor.GRAY + "You don't have enough money to buy the rank "
+				player.sendMessage(ChatColor.GRAY
+						+ "You don't have enough money to buy the rank "
 						+ rankFile.getName(rankFile.getId(args[1])));
 				return;
 			}
 		} else {
-			player.sendMessage(ChatColor.GRAY + "The rank \"" + args[1] + "\" doesn't exist!");
+			player.sendMessage(ChatColor.GRAY + "The rank \"" + args[1]
+					+ "\" doesn't exist!");
 			return;
 		}
 	}
