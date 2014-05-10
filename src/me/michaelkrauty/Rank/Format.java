@@ -1,6 +1,6 @@
 package me.michaelkrauty.Rank;
 
-public class Format extends Main{
+public class Format extends Rank{
 	
 	public static String format(String str){
 		return str
