@@ -5,13 +5,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Logger;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class RankFile {
-
-	private static Logger log = Main.log;
 
 	File ranksFile;
 	YamlConfiguration ranks = new YamlConfiguration();
@@ -20,13 +17,10 @@ public class RankFile {
 		try {
 			ranksFile = new File(Main.main.getDataFolder() + "/" + "ranks.yml");
 			if (!ranksFile.exists()) {
-				log.info("Creating new ranks.yml");
 				ranksFile.createNewFile();
 			}
 			ranks.load(ranksFile);
 		} catch (Exception e) {
-			// causing an error somehow?
-			// main.log.info("Couldn't load ranks.yml!");
 			e.printStackTrace();
 		}
 	}
@@ -43,7 +37,6 @@ public class RankFile {
 			}
 			return rankList;
 		} catch (Exception e) {
-			log.info("ranks.yml is empty!");
 			return null;
 		}
 	}
@@ -64,8 +57,7 @@ public class RankFile {
 					}
 				}
 			}
-		} catch (Exception e) {
-			log.info("ranks.yml is empty!");
+		} catch (Exception ignored) {
 		}
 		return returnInt;
 	}
