@@ -1,39 +1,37 @@
 package me.michaelkrauty.Rank.commands;
 
-import me.michaelkrauty.Rank.*;
+import me.michaelkrauty.Rank.Main;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-public class Buy {
+public class Buy extends Main {
 
 	public Buy(Player player, String[] args) {
-		RankFile rankFile = new RankFile();
-		if (rankFile.getRanks().contains(rankFile.getId(args[1]))) {
-			if (Main.economy.getBalance(player.getName()) >= rankFile
-					.getPrice(rankFile.getId(args[1]))) {
-				Main.economy.withdrawPlayer(player.getName(),
-						rankFile.getPrice(rankFile.getId(args[1])));
-				for (int i = 0; i < rankFile.getCommands(args[1]).size(); i++) {
-					Main.main.getServer().dispatchCommand(
-							Main.main.getServer().getConsoleSender(),
-							rankFile.getCommands(args[1]).get(i));
+		if (args.length == 2) {
+			if (rankFile.getRanks().contains(args[1])) {
+				if (economy.getBalance(player.getName()) >= rankFile
+						.getPrice(args[1])) {
+					for (int i = 0; i < rankFile.getCommands(args[1]).size(); i++) {
+						getServer().dispatchCommand(
+								getServer().getConsoleSender(),
+								rankFile.getCommands(args[1]).get(i));
+					}
+					economy.withdrawPlayer(player.getName(),
+							rankFile.getPrice(args[1]));
+
+				} else {
+					player.sendMessage(ChatColor.GRAY
+							+ "You don't have enough money to buy that rank! ("
+							+ economy.getBalance(player.getName()) + "/"
+							+ rankFile.getPrice(args[1]));
 				}
-				player.sendMessage(ChatColor.GRAY
-						+ "Successfully bought the rank "
-						+ rankFile.getName(rankFile.getId(args[1])) + " for "
-						+ rankFile.getPrice(rankFile.getId(args[1])));
-				return;
 			} else {
-				player.sendMessage(ChatColor.GRAY
-						+ "You don't have enough money to buy the rank "
-						+ rankFile.getName(rankFile.getId(args[1])));
-				return;
+				player.sendMessage(ChatColor.GRAY + "The rank " + args[1]
+						+ " doesn't exist!");
 			}
 		} else {
-			player.sendMessage(ChatColor.GRAY + "The rank \"" + args[1]
-					+ "\" doesn't exist!");
-			return;
+			player.sendMessage(ChatColor.GRAY + "Usage: /rank buy <rank>");
 		}
 	}
 }

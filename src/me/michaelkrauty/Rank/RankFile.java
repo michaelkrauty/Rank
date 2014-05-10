@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -16,75 +17,46 @@ public class RankFile {
 		try {
 			ranksFile = new File(Main.main.getDataFolder() + "/" + "ranks.yml");
 			if (!ranksFile.exists()) {
-				Main.main.log.info("Creating new ranks.yml");
+				Main.main.log.info("Creating new ranks.yml in \""
+						+ Main.main.getDataFolder() + "/" + "ranks.yml\"");
 				ranksFile.createNewFile();
 			}
 			ranks.load(ranksFile);
+			Main.main.log.info("Loaded ranks.yml");
 		} catch (Exception e) {
-			Main.main.log.info("Couldn't load ranks.yml!");
+			// causing an error somehow?
+			// main.log.info("Couldn't load ranks.yml!");
 			e.printStackTrace();
 		}
 	}
 
-	public ArrayList<Integer> getRanks() {
-		ArrayList<Integer> rankList = new ArrayList<Integer>();
+	public ArrayList<String> getRanks() {
+		ArrayList<String> rankList = new ArrayList<String>();
 		try {
 			load();
-			Object[] keys = ranks.getKeys(true).toArray();
-			for (int i = 0; i < keys.length; i++) {
-				int rank = 0;
-				boolean num = true;
-				try {
-					rank = Integer.parseInt(keys[i].toString());
-				} catch (NumberFormatException e) {
-					num = false;
-				}
-				if (num) {
-					rankList.add(rank);
+			Set<String> keys = ranks.getKeys(true);
+			for (int i = 0; i < keys.size(); i++) {
+				if (keys.contains(".name")) {
+					rankList.add(ranks.getString(i + ".name"));
 				}
 			}
 			return rankList;
 		} catch (Exception e) {
 			Main.main.log.info("ranks.yml is empty!");
-			e.printStackTrace();
 			return null;
 		}
 	}
 
-	public String getName(int id) {
-		load();
-		return ranks.getString(getRanks().get(id) + ".name");
-	}
-
-	public int getId(String name) {
-		load();
-		int id = -1;
-		for (int i = 0; i < getRanks().size(); i++) {
-			if (getName(getRanks().get(i)).equalsIgnoreCase(name)) {
-				id = i;
-			}
-		}
-		return id;
-	}
-
-	public int getPrice(int id) {
-		load();
-		return ranks.getInt(getRanks().get(id) + ".price");
-	}
-
 	public int getPrice(String name) {
-		load();
 		return ranks.getInt(name + ".price");
 	}
 
 	public ArrayList<String> getCommands(String name) {
-		load();
 		ArrayList<String> cmds = new ArrayList<String>();
 		@SuppressWarnings("unchecked")
-		List<String> commands = (List<String>) ranks.getList(getId(name)
-				+ ".commands");
-		for (int i = 0; i < commands.size(); i++) {
-			cmds.add(commands.get(i));
+		List<String> cmdlist = (List<String>) ranks.getList(name + ".commands");
+		for (int i = 0; i < cmdlist.size(); i++) {
+			cmds.add((String) cmdlist.get(i));
 		}
 		return cmds;
 	}

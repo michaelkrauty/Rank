@@ -4,3 +4,47 @@ unknown_command: "&aUnknown command! Use /rank help for help."
 rank_not_found: "&aCouldn't find that rank!"
 #What should we wend to the player if they can't afford the rank they're trying to buy?
 not_enough_money: "&aYou don't have enough money for <rank>!"
+
+ranks:
+  #You can put up to 10 ranks here.
+#  rank1:
+#    #This is what <rank> is replaced by. This is also what people will /rank buy
+#    name: Member
+#    #The price of the rank
+#    price: 1500
+#    #What should we send to the player if they successfully buy the rank?
+#    message_to_player: You successfully bought the rank <rank>!
+#    #What commands should we execute when a player buys a rank?
+#    #You can put up to 20 commands here.
+#    command1: say this is command 1
+#    command2: say this is command 2
+#    command3: say this is command 3
+#    command4: say <player> bought <rank>!
+  member:
+    name: Member
+    price: 1500
+    player_message:
+    - "&aThank you for buying the rank &2Member!"
+    commands:
+    - "say <player> bought the rank Member!"
+    - "tell <player> Thanks for buying member :)"
+  iron:
+    name: Iron
+    price: 3000
+    player_message:
+    - "You just bought &eIron"
+    commands:
+    - "say <player> bought the rank Iron!"
+    - "say awesome."
+  example3:
+    name: example3
+    price: 50000
+    player_message:
+    - "&aThank you for buying the rank &6example3!"
+    - "&cEnjoy your TNT ;)"
+    commands:
+    - "gamemode 1 <player>"
+    - "time set 0"
+    - "toggledownfall"
+    - "give <player> 46 64"
+    - "more commands like this"

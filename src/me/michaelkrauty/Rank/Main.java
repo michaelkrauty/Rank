@@ -13,12 +13,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-// TODO: create scheduler to check player stats every x minutes & make changes accordingly
-// TODO: add listeners for player/mob kill events
-
 public class Main extends JavaPlugin {
 
 	public static Main main;
+	
+	public static RankFile rankFile = new RankFile();
 
 	Logger log = Logger.getLogger("MC");
 
@@ -53,8 +52,7 @@ public class Main extends JavaPlugin {
 			Player player = (Player) sender;
 
 			if (args.length == 0) {
-				player.sendMessage(ChatColor.GRAY
-						+ "Incorrect usage! Use \"/rank help\" for help!");
+				sender.sendMessage(ChatColor.GRAY + "Usage: /rank <list|buy|help>");
 				return true;
 			}
 
@@ -73,13 +71,7 @@ public class Main extends JavaPlugin {
 				return true;
 			}
 
-			if (args[0].equalsIgnoreCase("test")) {
-				new Test(player, args);
-				return true;
-			}
-
-			player.sendMessage(ChatColor.GRAY
-					+ "Unknown command! Use \"/rank help\" for help!");
+			sender.sendMessage(ChatColor.GRAY + "Usage: /rank <list|buy|help>");
 			return true;
 		}
 		return true;
