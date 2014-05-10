@@ -8,14 +8,20 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class Buy {
-	
+
 	private final Main main = Main.main;
 	private final RankFile rankFile = Main.rankFile;
 	private final Economy economy = Main.economy;
 
 	public Buy(Player player, String[] args) {
 		if (args.length == 2) {
-			if (rankFile.getRanks().contains(args[1])) {
+			boolean contains = false;
+			for (int i = 0; i < rankFile.getRanks().size(); i++) {
+				if (rankFile.getRanks().get(i).equalsIgnoreCase(args[1])) {
+					contains = true;
+				}
+			}
+			if (contains) {
 				if (economy.getBalance(player.getName()) >= rankFile
 						.getPrice(args[1])) {
 					for (int i = 0; i < rankFile.getCommands(args[1]).size(); i++) {
