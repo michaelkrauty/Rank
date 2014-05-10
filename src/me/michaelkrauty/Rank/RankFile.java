@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class RankFile {
-	
+
 	private static Logger log = Main.log;
 
 	File ranksFile;
@@ -47,21 +47,25 @@ public class RankFile {
 			return null;
 		}
 	}
-	
+
 	public String getRankName(int id) {
 		return ranks.getString(id + ".name");
 	}
-	
+
 	public int getRankID(String name) {
-		ArrayList<String> rankList = getRanks();
 		int returnInt = 0;
-		System.out.println("test");
-		System.out.println(rankList.size());
-		for(int i = 0; i > rankList.size(); i++) {
-			log.info(rankList.get(i));
-			if(rankList.get(i).equalsIgnoreCase(name)) {
-				returnInt = i;
+		try {
+			load();
+			Set<String> keys = ranks.getKeys(true);
+			for (int i = 0; i < keys.size(); i++) {
+				if (ranks.getString(i + ".name") != null) {
+					if(ranks.getString(i + ".name").equalsIgnoreCase(name)) {
+						returnInt = i;
+					}
+				}
 			}
+		} catch (Exception e) {
+			log.info("ranks.yml is empty!");
 		}
 		return returnInt;
 	}
@@ -73,7 +77,8 @@ public class RankFile {
 	public ArrayList<String> getCommands(String name) {
 		ArrayList<String> cmds = new ArrayList<String>();
 		@SuppressWarnings("unchecked")
-		List<String> cmdlist = (List<String>) ranks.getList(getRankID(name) + ".commands");
+		List<String> cmdlist = (List<String>) ranks.getList(getRankID(name)
+				+ ".commands");
 		for (int i = 0; i < cmdlist.size(); i++) {
 			cmds.add((String) cmdlist.get(i));
 		}
